@@ -1,0 +1,15 @@
+extends ../layouts/common
+block content
+  h1 Register
+  form(action="/users/register", method="POST")
+    label Username:
+    input(name="username", type="text")
+    br
+    label Password:
+    input(name="password", type="text")
+    br
+    label Age: 
+    input(name="age", type="text")
+    br
+
+    button(class="btn btn-primary") Register

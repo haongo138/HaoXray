@@ -1,0 +1,11 @@
+extends ../layouts/common
+block content
+    h1 Userlist
+    a(href="/users/register") New member
+    form(action="/users/search", method="GET")
+      input(id="search-text", type="text", name="q", value="")
+      button(class="btn btn-primary") Search
+    ul
+      each user in users
+        li= user.username + ' '
+          a(href='/users/' + user.id) View detail..

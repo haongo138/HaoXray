@@ -1,0 +1,16 @@
+extends ./layouts/common.pug
+block content
+	nav.navbar.navbar-light.bg-light
+		a.navbar-brand(href='#')
+			img(src='images/logo.png')
+		ul(style="flex-grow: 0.1").navbar-nav.flex-row.justify-content-around
+			li.nav-item.active
+				a.nav-link(href='#')
+					| Home 
+					span.sr-only (current)
+			li.nav-item
+				a.nav-link(href='/about') About
+			li.nav-item
+				a.nav-link(href='#') Ranking
+			li.nav-item
+				a.nav-link(href='/users') Members
