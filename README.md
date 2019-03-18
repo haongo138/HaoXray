@@ -1,1 +1,1 @@
-This project is just a practice of learning Express Js
+This project is just a practice of learning NodeJS
