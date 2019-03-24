@@ -30,6 +30,26 @@ module.exports.getUserInfo = (req, res) => {
 // POST controllers
 module.exports.postRegister = (req, res) => {
   req.body.id = shortid.generate();
+  let errors = [];
+  if(!req.body.username) {
+    errors.push("An username is required !");
+  }
+  if(!req.body.password) {
+    errors.push("A password is required !");
+  }
+  if(!req.body.age) {
+    errors.push("Age is required !");
+  }
+  if(!req.body.city) {
+    errors.push("City is required !");
+  }
+  if(errors.length) {
+    res.render('users/register', {
+      errors: errors,
+      value: req.body
+    });
+    return;
+  }
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };

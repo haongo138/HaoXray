@@ -1,6 +1,19 @@
 extends ../layouts/common
 block content
-  h1 View user's information 
-  span Name: #{user.username}
-  br
-  span Age: #{user.age}
+  html
+  body
+    h3.text-center.pb-3 User's profile
+    table.table.table-bordered
+      tbody
+        tr
+          th(scope='row', style="width:10%") Username
+          td #{user.username}
+        tr
+          th(scope='row') Age
+          td #{user.age}
+        tr
+          th(scope='row') City
+          td #{user.city}
+
+
+  a.btn.btn-primary(href='/users') Back

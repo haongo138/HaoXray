@@ -1,46 +1,18 @@
 {
   "users": [
     {
-      "username": "Ha",
-      "password": "1234567",
-      "age": "14",
-      "id": "V9_VUTXH4"
-    },
-    {
-      "username": "haoxray",
-      "password": "",
+      "username": "toxik_h",
+      "password": "1223456",
       "age": "19",
-      "id": "jX7igDtzu"
+      "city": "Bac Ninh",
+      "id": "cAEKhWB-8"
     },
     {
       "username": "toxicFumo",
-      "password": "dasdsadsaNN",
+      "password": "12345678",
       "age": "19",
-      "id": "Ud6aE5UmL"
-    },
-    {
-      "username": "hyosimple",
-      "password": "1234455",
-      "age": "19",
-      "id": "X5-448aK-"
-    },
-    {
-      "username": "hungngo",
-      "password": "123456",
-      "age": "10",
-      "id": "mrS1lFdr9"
-    },
-    {
-      "username": "hihihihi",
-      "password": "12332",
-      "age": "18",
-      "id": "UWFPT97oM"
-    },
-    {
-      "username": "hahahah",
-      "password": "123456",
-      "age": "18",
-      "id": "TE7mOneU7"
+      "city": "Bac Ninh",
+      "id": "0P1WcrHqq"
     }
   ]
 }

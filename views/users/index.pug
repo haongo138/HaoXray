@@ -1,11 +1,23 @@
 extends ../layouts/common
 block content
-    h1 Userlist
-    a(href="/users/register") New member
-    form(action="/users/search", method="GET")
-      input(id="search-text", type="text", name="q", value="")
-      button(class="btn btn-primary") Search
-    ul
+    h1.pb-3 Userlist
+    form.form-inline.d-block(action="/users/search", method="GET")
+      input.form-control(id="search-text", type="text", placeholder="Type to search..", name='q')
+      button.btn.btn-primary.ml-2(style="font-size: 20px") 
+        i(class="fas fa-search")
+    
+    table.table
+      tr
+        th Name
+        th Age
+        th City
+        th Action
       each user in users
-        li= user.username + ' '
-          a(href='/users/' + user.id) View detail..
+        tr
+          td= user.username
+          td= user.age
+          td= user.city
+          td  
+            a(href='/users/' + user.id) View profile
+
+    a.btn.btn-secondary(href="/users/register") New member
