@@ -2,13 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 const controller = require('../controllers/user.controller');
-
+const validate = require('../validate/user.validate');
+const authMiddleware = require('../middlewares/auth.middleware');
 // GET
-router.get('/', controller.index);
-router.get('/search', controller.search);
+router.get('/', authMiddleware.requireAuth, controller.index);
+router.get('/search', authMiddleware.requireAuth, controller.search);
 router.get('/register', controller.register);
-router.get('/:id', controller.getUserInfo);
+router.get('/:id', authMiddleware.requireAuth, controller.getUserInfo);
 // POST
-router.post('/register', controller.postRegister);
+router.post('/register', validate.postRegister, controller.postRegister);
 
 module.exports = router;
