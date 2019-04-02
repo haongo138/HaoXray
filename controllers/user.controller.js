@@ -1,4 +1,5 @@
 const shortid = require('shortid');
+
 const db = require('../db');
 
 let users = db.get('users').value();
@@ -9,6 +10,7 @@ module.exports.index = (req, res) => {
     users: users
   });
 };
+
 module.exports.search = (req, res) => {
   let q = req.query.q;
   matchedUsers = users.filter(function(user){
@@ -19,6 +21,7 @@ module.exports.search = (req, res) => {
   });
 };
 module.exports.register = (req, res) => res.render('users/register');
+
 module.exports.getUserInfo = (req, res) => {
   var id = req.params.id;
   user = db.get('users').find({ id: id }).value();

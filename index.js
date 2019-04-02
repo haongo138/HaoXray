@@ -21,7 +21,7 @@ app.set('views', './views');
 app.use(bodyParser.json()); //for parsing  application/json
 app.use(bodyParser.urlencoded({ extend: true})); //for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser());
+app.use(cookieParser('sadsafsa2312rfsfds'));
 
 // setup routes
 app.use('/', indexRoute);

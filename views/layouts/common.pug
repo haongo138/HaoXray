@@ -17,5 +17,7 @@ html
             a.nav-link(href='#') Ranking
           li.nav-item
             a.nav-link(href='#') Policy
+      if currentUser
+        p= currentUser.username
     .container.pt-5
       block content
