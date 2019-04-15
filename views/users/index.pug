@@ -6,15 +6,22 @@ block content
       button.btn.btn-primary.ml-2(style="font-size: 20px") 
         i(class="fas fa-search")
     
-    table.table
+    table.table(style="overflow: scroll;")
       tr
         th Name
+        th Avatar
         th Age
         th City
         th Action
       each user in users
         tr
           td= user.username
+          td
+            if(user.profileAvatar)
+              img(src=user.profileAvatar, width="32")
+            else
+              img(src="/images/no_profile_image.png")
+
           td= user.age
           td= user.city
           td  

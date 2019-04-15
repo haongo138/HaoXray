@@ -39,3 +39,7 @@ module.exports.search = (req, res) => {
     	products: matchedProducts
   });
 };
+
+module.exports.addNewProduct = (req, res) => {
+  res.render('products/new');
+};

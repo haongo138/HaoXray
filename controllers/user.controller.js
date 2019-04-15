@@ -34,6 +34,12 @@ module.exports.getUserInfo = (req, res) => {
 module.exports.postRegister = (req, res) => {
   req.body.id = shortid.generate();
   req.body.password = md5(req.body.password);
+  if(req.file) {
+      req.body.profileAvatar = req.file.path.replace(/\\/g, "/").substring("public".length).split('/').slice(1).join('/');
+  }
+  else {
+    req.body.profileAvatar = "images/no_profile_image.png";
+  }
   db.get('users').push(req.body).write();
   res.redirect('/users');
-};
+}; 

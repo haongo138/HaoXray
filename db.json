@@ -1,25 +1,36 @@
 {
   "users": [
     {
-      "username": "toxik_h",
-      "password": "00c36b66aa2bfe6fe0c4f44130f95dc9",
+      "username": "hungngo",
+      "password": "f28e5b712524e2d87890a01d31ff00b6",
       "age": "19",
       "city": "Bac Ninh",
-      "id": "cAEKhWB-8"
+      "id": "UntIU-uIT",
+      "profileAvatar": "uploads/f310dce65bf04519f6d610292367874a"
     },
     {
       "username": "toxicFumo",
-      "password": "25d55ad283aa400af464c76d713c07ad",
+      "password": "00c36b66aa2bfe6fe0c4f44130f95dc9",
       "age": "19",
       "city": "Bac Ninh",
-      "id": "0P1WcrHqq"
+      "id": "7V2uwg0dy",
+      "profileAvatar": "uploads/d2e148779f48433f0ff3d1397876344d"
     },
     {
       "username": "haongo138",
       "password": "25d55ad283aa400af464c76d713c07ad",
-      "age": "9",
+      "age": "19",
       "city": "Bac Ninh",
-      "id": "P9R0qfB59"
+      "id": "eXoXDhwVD",
+      "profileAvatar": "uploads/f822799e876f7b4d1789a2a681753871"
+    },
+    {
+      "username": "haoxray",
+      "password": "00c36b66aa2bfe6fe0c4f44130f95dc9",
+      "age": "19",
+      "city": "Bac Ninh",
+      "id": "TOXz4KW0V",
+      "profileAvatar": "images/no_profile_image.png"
     }
   ],
   "products": [
