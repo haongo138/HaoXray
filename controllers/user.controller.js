@@ -1,5 +1,5 @@
 const shortid = require('shortid');
-
+const md5 = require('md5');
 const db = require('../db');
 
 let users = db.get('users').value();
@@ -33,6 +33,7 @@ module.exports.getUserInfo = (req, res) => {
 // POST controllers
 module.exports.postRegister = (req, res) => {
   req.body.id = shortid.generate();
+  req.body.password = md5(req.body.password);
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };

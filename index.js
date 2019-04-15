@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
 const indexRoute = require('./routes/index.route');
+const productRoute = require('./routes/products.route');
 
 // setup environment
 dotenv.config();
@@ -21,12 +22,13 @@ app.set('views', './views');
 app.use(bodyParser.json()); //for parsing  application/json
 app.use(bodyParser.urlencoded({ extend: true})); //for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser('sadsafsa2312rfsfds'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 // setup routes
 app.use('/', indexRoute);
 app.use('/users', userRoute);
 app.use('/auth', authRoute); 
+app.use('/products', productRoute);
 
 // assign run port
 const PORT = process.env.PORT || 5000;

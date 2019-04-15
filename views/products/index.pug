@@ -1,0 +1,27 @@
+extends ../layouts/common.pug
+block content
+	form.form-inline.d-block(action="/products/search", method="GET")
+			input.form-control(id="search-text", type="text", placeholder="Type to search..", name='q')
+			button.btn.btn-primary.ml-2(style="font-size: 20px") 
+				i(class="fas fa-search")
+	h1.text-center Product page
+	if errors
+			each error in errors
+				.alert.alert-danger= error
+	.product-container.d-flex.flex-wrap.justify-content-around.mt-5
+		each product in products
+			.card(style='width: 18rem; margin-bottom: 5em')
+				img.card-img-top(src=product.product_image, alt='')
+				.card-body
+					h5.card-title= product.product_name
+					p.card-text= product.description
+				a.btn.btn-primary(href='#') Buy it
+	if totalPages	
+		ul.pagination.justify-content-center#pagin_container
+			li.page-item
+				a.page-link(href='?page=' + prevPage) &laquo;
+			- for(var i = 1; i<=totalPages; i++)
+				li.page-item.number_btn
+					a.page-link(href='?page=' + i)= i
+			li.page-item
+				a.page-link(href='?page=' + nextPage) &raquo;
