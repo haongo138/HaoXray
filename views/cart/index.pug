@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+block content
+  h1.pb-5 Cart
+  table.table
+    tr
+      th Image
+      th Name
+      th Quantity
+      th
+    if(productsInCart)
+      each product in productsInCart
+        tr
+          td
+            img(src=product.product_image, width="32")
+          td= product.product_name 
+          td= product.quantity 
+          td
+            a(href="/cart/remove/" + product.id, style="text-decoration: none").fas.fa-minus-circle

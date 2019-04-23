@@ -38,19 +38,22 @@
       "id": "fbf45c9f-6eba-44cc-bb93-2e7deaa58935",
       "product_name": "Coconut - Whole",
       "product_image": "https://robohash.org/perspiciatissuntasperiores.bmp?size=320x240&set=set1",
-      "description": "sollicitudin ut suscipit a feugiat et eros vestibulum ac est"
+      "description": "sollicitudin ut suscipit a feugiat et eros vestibulum ac est",
+      "quantity": 1
     },
     {
       "id": "8f2a009a-6552-41c4-9151-d8620e77e4cd",
       "product_name": "Wine - Touraine Azay - Le - Rideau",
       "product_image": "https://robohash.org/sequilaboriosamcorporis.png?size=320x240&set=set1",
-      "description": "leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel"
+      "description": "leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+      "quantity": 2
     },
     {
       "id": "ee6d2468-6b11-4e89-b94b-e19685c8e4b1",
       "product_name": "Cranberries - Dry",
       "product_image": "https://robohash.org/exercitationemipsamexcepturi.jpg?size=320x240&set=set1",
-      "description": "commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing"
+      "description": "commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing",
+      "quantity": 1
     },
     {
       "id": "3f287ea8-752f-42b7-a917-c38c581e4ac3",
@@ -68,7 +71,8 @@
       "id": "0f01db30-c9a3-4f86-bb68-f354803e8474",
       "product_name": "Yoplait - Strawbrasp Peac",
       "product_image": "https://robohash.org/suscipitutet.png?size=320x240&set=set1",
-      "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas"
+      "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas",
+      "quantity": 1
     },
     {
       "id": "285536f1-dc31-49a8-9979-bf4a7a4d439d",
@@ -141,6 +145,20 @@
       "product_name": "Wine - Sauvignon Blanc",
       "product_image": "https://robohash.org/nihilistecum.jpg?size=320x240&set=set1",
       "description": "proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "gzsiF1R2e",
+      "cart": [
+        {
+          "id": "8f2a009a-6552-41c4-9151-d8620e77e4cd",
+          "product_name": "Wine - Touraine Azay - Le - Rideau",
+          "product_image": "https://robohash.org/sequilaboriosamcorporis.png?size=320x240&set=set1",
+          "description": "leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+          "quantity": 2
+        }
+      ]
     }
   ]
 }

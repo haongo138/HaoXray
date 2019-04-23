@@ -23,7 +23,7 @@ module.exports.index = (req, res) => {
   }
 
   res.render('products/index', {
-		products: products.slice(start, end),
+	products: products.slice(start, end),
     totalPages: totalPages,
     prevPage: prevPage,
     nextPage: nextPage
