@@ -31,6 +31,10 @@ module.exports.getUserInfo = async function (req, res) {
   });
 };
 
+module.exports.logout = async (req, res, next) => {
+  res.clearCookie('userId');
+  res.redirect('/users');
+}
 // POST controllers
 module.exports.postRegister = (req, res) => {
   req.body.password = md5(req.body.password);

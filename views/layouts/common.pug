@@ -21,6 +21,7 @@ html
           li.nav-item
             a.nav-link(href='#') Policy
       if currentUser
-        p= currentUser.username
+        p= currentUser.username + " - "
+          a(href="users/logout")  Logout
     .container.pt-5
       block content

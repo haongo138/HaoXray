@@ -10,7 +10,9 @@ const upload = multer({ dest: './public/uploads/' });
 // GET
 router.get('/', authMiddleware.requireAuth, controller.index);
 
-router.get('/search',authMiddleware.requireAuth, controller.search);
+router.get('/search', authMiddleware.requireAuth, controller.search);
+
+router.get('/logout', controller.logout);
 
 router.get('/register', controller.register);
 
