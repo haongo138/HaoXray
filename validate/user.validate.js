@@ -1,8 +1,7 @@
-const db = require('../db');
+const User = require('../models/user.model');
 
-let users = db.get('users').value();
-
-module.exports.postRegister = (req, res, next) => {
+module.exports.postRegister = async (req, res, next) => {
+  const users = await User.find();
   let errors = [];
   if(!req.body.username) {
     errors.push("An username is required !");

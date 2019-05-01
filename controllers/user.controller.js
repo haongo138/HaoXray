@@ -1,17 +1,18 @@
-const shortid = require('shortid');
 const md5 = require('md5');
-const db = require('../db');
+const User = require('../models/user.model');
 
-let users = db.get('users').value();
+
 
 //GET controllers
-module.exports.index = (req, res) => {
+module.exports.index = async function (req, res) {
+  const users = await User.find();
   res.render('users/index', {
     users: users
   });
 };
 
-module.exports.search = (req, res) => {
+module.exports.search = async function (req, res) {
+  const users = await User.find();
   let q = req.query.q;
   matchedUsers = users.filter(function(user){
     return user.username.toLowerCase().indexOf(q.toLowerCase()) !== -1;
@@ -22,9 +23,9 @@ module.exports.search = (req, res) => {
 };
 module.exports.register = (req, res) => res.render('users/register');
 
-module.exports.getUserInfo = (req, res) => {
-  var id = req.params.id;
-  user = db.get('users').find({ id: id }).value();
+module.exports.getUserInfo = async function (req, res) {
+  const _id = req.params.id;
+  user = await User.findOne({ _id: _id });
   return res.render('users/viewInfo', {
     user: user
   });
@@ -32,7 +33,6 @@ module.exports.getUserInfo = (req, res) => {
 
 // POST controllers
 module.exports.postRegister = (req, res) => {
-  req.body.id = shortid.generate();
   req.body.password = md5(req.body.password);
   if(req.file) {
       req.body.profileAvatar = req.file.path.replace(/\\/g, "/").substring("public".length).split('/').slice(1).join('/');
@@ -40,6 +40,9 @@ module.exports.postRegister = (req, res) => {
   else {
     req.body.profileAvatar = "images/no_profile_image.png";
   }
-  db.get('users').push(req.body).write();
+  user = new User(req.body);
+  user.save(function(err) {
+    if (err) throw err;
+})
   res.redirect('/users');
 }; 

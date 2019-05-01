@@ -15,4 +15,5 @@ block content
           td= product.product_name 
           td= product.quantity 
           td
-            a(href="/cart/remove/" + product.id, style="text-decoration: none").fas.fa-minus-circle
+            - var pid = product._id.toString();
+            a(href="/cart/remove/" + pid, style="text-decoration: none").fas.fa-minus-circle

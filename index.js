@@ -2,6 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
+// setup environment
+dotenv.config();
+
+// connect MongoDB
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, (err) => {
+    err ? console.log(`ERROR: ${err}`) : console.log('Connect successfully !!');
+});
 
 // routes 
 const userRoute = require('./routes/user.route');
@@ -12,9 +21,6 @@ const cartRoute = require('./routes/cart.route.js');
 
 // middlewares
 const sessionMiddleware = require('./middlewares/session.middleware');
-// setup environment
-dotenv.config();
-
 // create Express app
 const app = express();
 

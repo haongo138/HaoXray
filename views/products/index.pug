@@ -18,12 +18,39 @@ block content
           h5.card-title= product.product_name
           p.card-text= product.description
         a.btn.btn-primary(href="/cart/add/" + product.id) Add to cart
-  if totalPages	
-    ul.pagination.justify-content-center#pagin_container
-      li.page-item
-        a.page-link(href='?page=' + prevPage) &laquo;
-      - for(var i = 1; i<=totalPages; i++)
-        li.page-item.number_btn
-          a.page-link(href='?page=' + i)= i
-      li.page-item
-        a.page-link(href='?page=' + nextPage) &raquo;
+
+  if (pages)
+    ul.pagination.d-flex.justify-content-center
+      if (current == 1)
+        li.disabled
+          a First
+      else 
+        li
+          a(href="/products/1") First
+      | ...    
+      if(Number(current) > 5)
+        - var i = Number(current) - 4
+      else
+        - var i = 1      
+      
+      if(i!=1)
+        li.disabled
+          a ... 
+      
+      - for (; i <= (Number(current) + 4) && i <= pages; i++)
+        if(i == current)
+          li.active
+            a= i
+        else
+          li
+            a(href="/products/" + i)= i
+        if (i == Number(current) + 4 && i < pages)
+          li.disabled
+            a ... 
+      |...
+      if (current == pages)
+        li.disabled 
+          a Last
+      else
+        li
+          a(href="/products/" + pages) Last

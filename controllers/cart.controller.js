@@ -1,80 +1,47 @@
-const db = require('../db');		
+const Session = require('../models/session.model');
+const Product = require('../models/product.model');
 
-let products = db.get('products').value();
-
-module.exports.index = (req, res, next) => {
+module.exports.index = async (req, res, next) => {
   let sessionId = req.signedCookies.sessionId;
-  let productsInCart = db.get('sessions')
-                         .find({id: sessionId})
-                         .get('cart')
-                         .value();
+  let currentSession = await Session.findOne({ sessionId: sessionId});
+  let productsInCart = currentSession.cart;
   res.render('cart', {
     productsInCart: productsInCart
   });
 }
 
-module.exports.addToCart = (req, res, next) => {
-    let productId = req.params.productId;
-    let sessionId = req.signedCookies.sessionId;
-    let chosenProduct = db.get('products')
-                          .find({id : productId})
-                          .value();
-    let cart = db.get('sessions')
-                 .find({id : sessionId})
-                 .get('cart');           
-
-// check whether a sessionId existed    
-    if(!sessionId) {
-      res.redirect('/products');
-      return;
-    }
-// whether chosenProduct existed or not..
-    let alreadyExisted = cart.value().filter(product => product.id === productId);
+module.exports.addToCart = async (req, res, next) => {
+    productId = req.params.productId;
+    currentSession = await Session.findOne({ sessionId: req.signedCookies.sessionId});
+    chosenProduct = await Product.findOne({ _id: productId});
     
-    if(alreadyExisted.length <= 0) {
-      cart.push(chosenProduct)
-          .write();
-    // set product quantity     
-      cart.find({id : productId})
-          .set('quantity', 1)
-          .write();
-      res.redirect('/products');
-      return;
+    if(currentSession.cart.some(product => product._id.toString() === productId)) {
+      currentSession.cart.find(e => e._id.toString() === productId).quantity += 1;
+      currentSession.cart._markModified();
+      currentSession.save();
     }
-
-    // in case chosen product've existed in Cart
     else {
-      productQuantity = cart.find({id : productId})
-                            .value()
-                            .quantity;
-      // update product quantity                      
-      cart.find({id : productId})
-          .assign({quantity: productQuantity + 1})
-          .write();
-      res.redirect('/products');
+      chosenProduct.quantity = 1;
+      currentSession.cart.push(chosenProduct);
+      currentSession.save();
     }
+    res.redirect('/products/index');
 }
 
-module.exports.removeFromCart = (req, res, next) => {
+module.exports.removeFromCart = async (req, res, next) => {
   let productId = req.params.productId;
   let sessionId = req.signedCookies.sessionId;
-  let cart = db.get('sessions')
-               .find({id : sessionId})
-               .get('cart');
-  
-  let productQuantity = cart.find({id : productId})
-                            .value()
-                            .quantity;
- 
-  // decrease or remove a product base on productQuantity
-  if(productQuantity>1) {
-    cart.find({id : productId})
-        .assign({quantity: productQuantity - 1})
-        .write();
+  currentSession = await Session.findOne({ sessionId: req.signedCookies.sessionId});
+  let chosenProduct = currentSession.cart.find(e => e._id.toString() === productId);
+  if(currentSession.cart) {
+    if (chosenProduct.quantity <= 1) {
+      currentSession.cart.remove(chosenProduct);
+    }
+    else {
+      chosenProduct.quantity -= 1;
+    }
+    currentSession.cart._markModified();
+    currentSession.save();
   }
-  else {
-    cart.remove({id : productId}).write();
-  }
-  
-  next();
+  res.redirect('/cart');
 }

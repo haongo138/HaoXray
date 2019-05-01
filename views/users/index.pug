@@ -1,7 +1,7 @@
 extends ../layouts/common
 block content
     h1.pb-3 Userlist
-    form.form-inline.d-block(action="/users/search", method="GET")
+    form.form-inline.d-block(action="users/search",method="GET")
       input.form-control(id="search-text", type="text", placeholder="Type to search..", name='q')
       button.btn.btn-primary.ml-2(style="font-size: 20px") 
         i(class="fas fa-search")
@@ -17,11 +17,7 @@ block content
         tr
           td= user.username
           td
-            if(user.profileAvatar)
-              img(src=user.profileAvatar, width="32")
-            else
-              img(src="/images/no_profile_image.png")
-
+              img(src= "/"+ user.profileAvatar, width="32")
           td= user.age
           td= user.city
           td  

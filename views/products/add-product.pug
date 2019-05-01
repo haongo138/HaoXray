@@ -1,0 +1,12 @@
+extends ../layouts/common.pug
+block content
+  form(method='post', enctype="multipart/form-data", action="/products/add-product")
+    .form-group.col-md-6
+      label(for='product_name') Product name:
+      input#product_name.form-control(type='text', placeholder='Enter product name', name='product_name')
+      label(for='description') Description:
+      input#description.form-control(type='text', placeholder='Describe about products..', name='description')
+    .form-group.col-md-6
+      label(for='product_image') Upload product's image
+      input#product_image.form-control-file(type="file", name="product_image")    
+    button.btn.btn-primary(type='submit') Add

@@ -1,15 +1,15 @@
 const md5 = require('md5');
 
-const db = require('../db');		
+const User = require('../models/user.model');		
 
 module.exports.login = function(req, res) {
 	res.render('auth/login');
 };
 
-module.exports.postLogin = function(req, res) {
+module.exports.postLogin = async function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
-	const existedUser = db.get('users').find({ username: username }).value();
+	const existedUser = await User.findOne({ username: username });
 	if(!existedUser) {
 		res.render('auth/login', {
 			errors: [
