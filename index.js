@@ -18,7 +18,7 @@ const authRoute = require('./routes/auth.route');
 const indexRoute = require('./routes/index.route');
 const productRoute = require('./routes/products.route');
 const cartRoute = require('./routes/cart.route.js');
-
+const productApiRoute = require('./api/routes/products.route');
 // middlewares
 const sessionMiddleware = require('./middlewares/session.middleware');
 // create Express app
@@ -40,6 +40,7 @@ app.use('/users', userRoute);
 app.use('/auth', authRoute); 
 app.use('/products', productRoute);
 app.use('/cart', cartRoute);
+app.use('/api', productApiRoute);
 
 // assign run port
 const PORT = process.env.PORT || 5000;
